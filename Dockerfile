@@ -12,7 +12,8 @@ ENV APACHE_SSL_DIR /etc/apache2/ssl
 RUN /bin/bash -c 'mkdir ${APACHE_SSL_DIR}'
 # install certbot
 RUN /bin/bash -c 'wget https://dl.eff.org/certbot-auto'
-RUN /bin/bash -c 'chmod a+x certbot-auto'
+RUN /bin/bash -c 'mv certbot-auto /usr/local/sbin'
+RUN /bin/bash -c 'chmod a+x /usr/local/sbin/certbot-auto'
 # RUN /bin/bash -c 'echo 'y\n' | ./certbot-auto'
 # /etc/letsencrypt/accounts
 # https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf
