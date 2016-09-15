@@ -1,7 +1,8 @@
-d-ubuntu:
+d-apache2-openssl:
   ports:
   - 65500:22/tcp
   - 65501:80/tcp
+  - 65502:443/tcp
   environment:
     DWL_USER_NAME: dwl
     DWL_USER_PASSWD: dwl
