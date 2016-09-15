@@ -10,7 +10,7 @@ ENV APACHE_SSL_DIR /etc/apache2/ssl
 ENV DWL_USER_DNS www.test.fr
 
 # create apache2 ssl directories
-RUN /bin/bash -c 'mkdir ${APACHE_SSL_DIR}'
+RUN /bin/bash -c 'mkdir -p ${APACHE_SSL_DIR}'
 # install certbot
 RUN /bin/bash -c 'wget https://dl.eff.org/certbot-auto'
 RUN /bin/bash -c 'mv certbot-auto /usr/local/sbin'

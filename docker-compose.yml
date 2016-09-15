@@ -6,7 +6,7 @@ d-apache2-openssl:
   environment:
     DWL_USER_NAME: dwl
     DWL_USER_PASSWD: dwl
-    DWL_USER_DNS: www.test.fr
+    DWL_USER_DNS: dev.davaskweblimited.com
   labels:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate

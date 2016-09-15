@@ -10,7 +10,7 @@ Define username:passwd for ssh access
 > DWL_USER_PASSWD dwl
 
 Define openssl dns
-> DWL_USER_DNS www.test.fr
+> DWL_USER_DNS dev.davaskweblimited.com
 
 ## LABEL
 

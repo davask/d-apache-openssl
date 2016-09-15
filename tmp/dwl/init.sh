@@ -19,11 +19,14 @@ if [ "`grep ${DWL_USER_NAME} /etc/passwd | wc -l`" = 0 ]; then
     chown -R ${DWL_USER_NAME}:${DWL_USER_NAME} -R ${DWL_USER_HOME}
 fi
 
+if [ "`find ${APACHE_SSL_DIR} -type f | wc -l`" = "0" ]; then
+    echo ">> configure certbot";
+    # echo "Y\n" | certbot-auto --apache -d ${DWL_USER_DNS};
+    echo "test your encryption with this url : https://www.ssllabs.com/ssltest/analyze.html?d=${DWL_USER_DNS}&latest"
+fi
+
 if [ "${DWL_INIT}" != "data" ]; then
     DWL_KEEP_RUNNING=true
-    echo ">> configure certbot";
-    # certbot-auto --apache -d ${DWL_USER_DNS};
-    echo "test your encryption with this url : https://www.ssllabs.com/ssltest/analyze.html?d=${DWL_USER_DNS}&latest"
     echo ">> Ssh started";
     service ssh start;
     echo ">> Sendmail started";
