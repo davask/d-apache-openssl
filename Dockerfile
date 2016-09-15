@@ -11,10 +11,13 @@ ENV DWL_USER_DNS www.test.fr
 
 # create apache2 ssl directories
 RUN /bin/bash -c 'mkdir -p ${APACHE_SSL_DIR}'
+
 # install certbot
 RUN /bin/bash -c 'wget https://dl.eff.org/certbot-auto'
-RUN /bin/bash -c 'mv certbot-auto /usr/local/sbin'
-RUN /bin/bash -c 'chmod a+x /usr/local/sbin/certbot-auto'
+RUN /bin/bash -c 'mv certbot-auto /usr/local/bin'
+RUN /bin/bash -c 'chmod a+x /usr/local/bin/certbot-auto'
+RUN /bin/bash -c 'certbot-auto --noninteractive --os-packages-only'
+RUN /bin/bash -c 'rm -rf /var/lib/apt/lists/*'
 # RUN /bin/bash -c 'echo 'y\n' | ./certbot-auto'
 # /etc/letsencrypt/accounts
 # https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf

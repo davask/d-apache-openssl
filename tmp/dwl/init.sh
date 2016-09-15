@@ -21,7 +21,8 @@ fi
 
 if [ "`find ${APACHE_SSL_DIR} -type f | wc -l`" = "0" ]; then
     echo ">> configure certbot";
-    # echo "Y\n" | certbot-auto --apache -d ${DWL_USER_DNS};
+    certbot-auto --non-interactive --agree-tos --email admin@davaskweblimited.com --apache --webroot-path /var/www/html --domains "${DWL_USER_DNS}";
+    rm -rf /var/lib/apt/lists/*
     echo "test your encryption with this url : https://www.ssllabs.com/ssltest/analyze.html?d=${DWL_USER_DNS}&latest"
 fi
 
