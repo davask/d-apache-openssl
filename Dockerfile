@@ -7,6 +7,7 @@ LABEL dwl.server.https="open ssl"
 ENV DWL_INIT ssl
 
 ENV APACHE_SSL_DIR /etc/apache2/ssl
+ENV DWL_USER_DNS www.test.fr
 
 # create apache2 ssl directories
 RUN /bin/bash -c 'mkdir ${APACHE_SSL_DIR}'

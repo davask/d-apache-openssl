@@ -1,0 +1,14 @@
+d-ubuntu:
+  ports:
+  - 65500:22/tcp
+  - 65501:80/tcp
+  environment:
+    DWL_USER_NAME: dwl
+    DWL_USER_PASSWD: dwl
+    DWL_USER_DNS: www.test.fr
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
+  tty: true
+  image: davask/d-apache2:2.4-u14.04
+  stdin_open: true
