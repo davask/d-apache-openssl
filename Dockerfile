@@ -26,3 +26,4 @@ RUN /bin/bash -c 'a2enmod ssl'
 # RUN printf 'FR\n.\nLyon\ndavask web limited\nIT\ndavaskweblimited.com\nadmin@davaskweblimited.com\n' | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
 
 COPY ./etc/apache2/sites-enabled /etc/apache2/sites-enabled
+COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh
