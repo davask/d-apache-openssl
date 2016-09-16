@@ -6,11 +6,22 @@ LABEL dwl.server.https="open ssl"
 # declare container type
 ENV DWL_INIT ssl
 
+# declare ssl
 ENV APACHE_SSL_DIR /etc/apache2/ssl
-ENV DWL_USER_DNS www.test.fr
+ENV CERTBOT_LOG_DIR /var/log/letsencrypt
+ENV DWL_USER_DNS dev.davaskweblimited.com
+ENV DWL_CERTBOT_EMAIL admin@davaskweblimited.com
+
+ENV DWL_SSLKEY_C "EU"
+ENV DWL_SSLKEY_ST "Germany"
+ENV DWL_SSLKEY_L "Erlangen"
+ENV DWL_SSLKEY_O "davask web limited - docker container"
+ENV DWL_SSLKEY_CN "davaskweblimited.com"
 
 # create apache2 ssl directories
 RUN /bin/bash -c 'mkdir -p ${APACHE_SSL_DIR}'
+# create certbot directories
+RUN /bin/bash -c 'mkdir -p ${CERTBOT_LOG_DIR}'
 
 # install certbot
 RUN /bin/bash -c 'wget https://dl.eff.org/certbot-auto'
@@ -18,10 +29,6 @@ RUN /bin/bash -c 'mv certbot-auto /usr/local/bin'
 RUN /bin/bash -c 'chmod a+x /usr/local/bin/certbot-auto'
 RUN /bin/bash -c 'certbot-auto --noninteractive --os-packages-only'
 RUN /bin/bash -c 'rm -rf /var/lib/apt/lists/*'
-# RUN /bin/bash -c 'echo 'y\n' | ./certbot-auto'
-# /etc/letsencrypt/accounts
-# https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf
-# RUN /bin/bash -c 'certbot-auto certonly --webroot -w /var/www/html -d dev.davaskweblimited.com'
 
 # Configure apache ssl
 RUN /bin/bash -c 'a2enmod ssl'

@@ -20,10 +20,26 @@ if [ "`grep ${DWL_USER_NAME} /etc/passwd | wc -l`" = 0 ]; then
 fi
 
 if [ "`find ${APACHE_SSL_DIR} -type f | wc -l`" = "0" ]; then
+    echo ">> configure ssl";
+    openssl req \
+       -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/apache.key \
+       -x509 -days 90 -out ${APACHE_SSL_DIR}/apache.crt \
+       -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}";
+
     echo ">> configure certbot";
-    certbot-auto --non-interactive --agree-tos --email admin@davaskweblimited.com --apache --webroot-path /var/www/html --domains "${DWL_USER_DNS}";
-    rm -rf /var/lib/apt/lists/*
+    certbot-auto --non-interactive --agree-tos --email ${DWL_CERTBOT_EMAIL} \
+        --apache --webroot-path /var/www/html --domains "${DWL_USER_DNS}";
+
     echo "test your encryption with this url : https://www.ssllabs.com/ssltest/analyze.html?d=${DWL_USER_DNS}&latest"
+
+    echo ">> add certbot renewal as a cron task";
+    crontab -l > file;
+    echo '30 2 * * 1 /usr/local/bin/certbot-auto renew >> /var/log/letsencrypt/le-renew.log' >> file
+    crontab file;
+
+else
+    echo ">> trigger certbot renewal";
+    certbot-auto renew
 fi
 
 if [ "${DWL_INIT}" != "data" ]; then

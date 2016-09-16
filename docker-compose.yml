@@ -7,6 +7,11 @@ d-apache2-openssl:
     DWL_USER_NAME: dwl
     DWL_USER_PASSWD: dwl
     DWL_USER_DNS: dev.davaskweblimited.com
+    DWL_SSLKEY_C: EU
+    DWL_SSLKEY_ST: Germany
+    DWL_SSLKEY_L: Erlangen
+    DWL_SSLKEY_O: davask web limited - docker container
+    DWL_SSLKEY_CN: davaskweblimited.com
   labels:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
