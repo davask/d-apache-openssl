@@ -31,11 +31,7 @@ RUN /bin/bash -c 'certbot-auto --noninteractive --os-packages-only'
 RUN /bin/bash -c 'rm -rf /var/lib/apt/lists/*'
 
 # Configure apache ssl
-COPY ./etc/apache2/mods-available /etc/apache2/mods-available
-RUN /bin/bash -c 'a2enmod ssl'
-
+COPY ./etc/apache2/mods-enabled/ssl.conf /etc/apache2/mods-enabled/ssl.conf
 # Configure apache virtualhost
-COPY ./etc/apache2/sites-available /etc/apache2/sites-available
-RUN /bin/bash -c 'a2ensite virtualhost'
-
+COPY ./etc/apache2/sites-enabled /etc/apache2/sites-enabled
 COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh
