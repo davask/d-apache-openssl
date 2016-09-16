@@ -25,7 +25,9 @@ if [ "`find ${APACHE_SSL_DIR} -type f | wc -l`" = "0" ]; then
        -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/apache.key \
        -x509 -days 90 -out ${APACHE_SSL_DIR}/apache.crt \
        -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}";
+fi
 
+if [ "`find /etc/letsencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ]; then
     echo ">> configure certbot";
     certbot-auto --non-interactive --agree-tos --email ${DWL_CERTBOT_EMAIL} \
         --apache --webroot-path /var/www/html --domains "${DWL_USER_DNS}";
@@ -36,7 +38,6 @@ if [ "`find ${APACHE_SSL_DIR} -type f | wc -l`" = "0" ]; then
     crontab -l > file;
     echo '30 2 * * 1 /usr/local/bin/certbot-auto renew >> /var/log/letsencrypt/le-renew.log' >> file
     crontab file;
-
 else
     echo ">> trigger certbot renewal";
     certbot-auto renew
