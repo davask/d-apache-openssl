@@ -31,9 +31,11 @@ RUN /bin/bash -c 'certbot-auto --noninteractive --os-packages-only'
 RUN /bin/bash -c 'rm -rf /var/lib/apt/lists/*'
 
 # Configure apache ssl
+COPY ./etc/apache2/mods-available /etc/apache2/mods-available
 RUN /bin/bash -c 'a2enmod ssl'
 
-# RUN printf 'FR\n.\nLyon\ndavask web limited\nIT\ndavaskweblimited.com\nadmin@davaskweblimited.com\n' | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
+# Configure apache virtualhost
+COPY ./etc/apache2/sites-available /etc/apache2/sites-available
+RUN /bin/bash -c 'a2ensite virtualhost'
 
-COPY ./etc/apache2/sites-enabled /etc/apache2/sites-enabled
 COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh
