@@ -23,6 +23,8 @@
 
 > DWL_CERTBOT_EMAIL docker@davaskweblimited.com
 
+> DWL_USER_APACHE_CONF default-ssl
+
 > DWL_SSLKEY_C "EU"
 
 > DWL_SSLKEY_ST "France"

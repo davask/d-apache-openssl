@@ -9,6 +9,7 @@ d-apache2-openssl:
     DWL_USER_PASSWD: secret
     DWL_SSH_ACCESS: false
     DWL_USER_DNS: dev.davaskweblimited.com
+    DWL_USER_APACHE_CONF: default-ssl
     DWL_SSLKEY_C: EU
     DWL_SSLKEY_ST: France
     DWL_SSLKEY_L: Vannes
@@ -21,5 +22,6 @@ d-apache2-openssl:
   hostname: dev.davaskweblimited.com
   image: davask/d-apache-openssl2:2.4-u14.04
   volumes:
+  - /path/to/proxy/sites-available:/etc/apache2/sites-available
   - /path/to/files:/home/username/files
   stdin_open: true

@@ -5,6 +5,7 @@ LABEL dwl.server.https="open ssl"
 # declare openssl
 ENV APACHE_SSL_DIR /etc/apache2/ssl
 ENV DWL_USER_DNS dev.davaskweblimited.com
+ENV DWL_USER_APACHE_CONF default-ssl
 ENV DWL_CERTBOT_EMAIL docker@davaskweblimited.com
 ENV DWL_SSLKEY_C "EU"
 ENV DWL_SSLKEY_ST "France"
