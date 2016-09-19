@@ -18,6 +18,7 @@ d-apache2-openssl:
     io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
   tty: true
+  hostname: dev.davaskweblimited.com
   image: davask/d-apache-openssl2:2.4-u14.04
   volumes:
   - /path/to/files:/home/username/files
