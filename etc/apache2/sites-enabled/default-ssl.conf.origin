@@ -1,8 +1,8 @@
 <IfModule mod_ssl.c>
     <VirtualHost *:443>
         ServerAdmin admin@davaskweblimited.com
-        ServerName davaskweblimited.com
-        ServerAlias dev.davaskweblimited.com
+        ServerName dev.davaskweblimited.com
+        ServerAlias private.davaskweblimited.com
         DocumentRoot /var/www/html
 
         ErrorLog ${APACHE_LOG_DIR}/error.log

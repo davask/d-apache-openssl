@@ -27,5 +27,5 @@ RUN /bin/bash -c 'rm -rf /var/lib/apt/lists/*'
 # Configure apache ssl
 COPY ./etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
 # Configure apache default-ssl.conf
-COPY ./etc/apache2/sites-enabled/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
+COPY ./etc/apache2/sites-enabled/default-ssl.conf.origin /etc/apache2/sites-enabled/default-ssl.conf.origin
 COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh
