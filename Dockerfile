@@ -4,7 +4,6 @@ LABEL dwl.server.https="open ssl"
 
 # declare openssl
 ENV APACHE_SSL_DIR /etc/apache2/ssl
-ENV CERTBOT_LOG_DIR /var/log/letsencrypt
 ENV DWL_USER_DNS dev.davaskweblimited.com
 ENV DWL_CERTBOT_EMAIL docker@davaskweblimited.com
 ENV DWL_SSLKEY_C "EU"
@@ -15,8 +14,7 @@ ENV DWL_SSLKEY_CN "davaskweblimited.com"
 
 # create apache2 ssl directories
 RUN /bin/bash -c 'mkdir -p ${APACHE_SSL_DIR}'
-# create certbot directories
-RUN /bin/bash -c 'mkdir -p ${CERTBOT_LOG_DIR}'
+RUN /bin/bash -c 'chmod 700 ${APACHE_SSL_DIR}'
 
 # install certbot
 RUN /bin/bash -c 'wget https://dl.eff.org/certbot-auto'
