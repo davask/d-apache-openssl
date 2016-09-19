@@ -25,9 +25,9 @@
 
 > DWL_SSLKEY_C "EU"
 
-> DWL_SSLKEY_ST "Germany"
+> DWL_SSLKEY_ST "France"
 
-> DWL_SSLKEY_L "Erlangen"
+> DWL_SSLKEY_L "Vannes"
 
 > DWL_SSLKEY_O "davask web limited - docker container"
 
