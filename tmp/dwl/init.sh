@@ -41,13 +41,13 @@ if [ "`find ${APACHE_SSL_DIR} -type f | wc -l`" = "0" ]; then
     openssl req \
        -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/apache.key \
        -x509 -days 90 -out ${APACHE_SSL_DIR}/apache.crt \
-       -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}" &> /dev/null;
+       -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}";
 fi
 
 if [ "`find /etc/letsencrypt/live -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ]; then
     echo "> configure certbot AKA let's encrypt";
     certbot-auto --non-interactive --agree-tos --email ${DWL_CERTBOT_EMAIL} \
-        --apache --webroot-path /var/www/html --domains "${DWL_USER_DNS}" &> /dev/null;
+        --apache --webroot-path /var/www/html --domains "${DWL_USER_DNS}";
 
     echo "> add certbot renewal as a cron task";
     crontab -l > file;
