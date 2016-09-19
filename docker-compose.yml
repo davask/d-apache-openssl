@@ -22,6 +22,6 @@ d-apache2-openssl:
   hostname: dev.davaskweblimited.com
   image: davask/d-apache-openssl2:2.4-u14.04
   volumes:
-  - /path/to/proxy/sites-available:/etc/apache2/sites-available
+  - /path/to/proxy/sites-enabled:/etc/apache2/sites-enabled
   - /path/to/files:/home/username/files
   stdin_open: true
