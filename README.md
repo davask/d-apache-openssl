@@ -1,5 +1,10 @@
 # dockerfile
 
+## Open port
+- 22
+- 80
+- 443
+
 ## Default ENV values
 
 ### Define Default LANG LOCAL
