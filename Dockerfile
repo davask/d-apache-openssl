@@ -1,6 +1,6 @@
 FROM davask/d-apache2:2.4-u14.04
 MAINTAINER davask <docker@davaskweblimited.com>
-LABEL dwl.server.https="open ssl"
+LABEL dwl.server.https="open ssl + certbot"
 
 # declare openssl
 ENV APACHE_SSL_DIR /etc/apache2/ssl
@@ -33,5 +33,7 @@ fi;'
 # Configure apache ssl
 COPY ./etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
 # Configure apache default-ssl.conf
-COPY ./etc/apache2/sites-enabled/virtualhost.conf.origin /etc/apache2/sites-enabled/virtualhost.conf.origin
+COPY ./etc/apache2/sites-enabled/virtualhost.conf /etc/apache2/sites-enabled/virtualhost.conf
+COPY ./tmp/dwl/openssl.sh /tmp/dwl/openssl.sh
+COPY ./tmp/dwl/certbot.sh /tmp/dwl/certbot.sh
 COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh

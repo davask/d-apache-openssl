@@ -1,34 +1,17 @@
 # dockerfile
 
+see [FROM IMAGE README.md](https://github.com/davask/d-apache2)
+
 ## Open port
-- 22
-- 80
 - 443
 
 ## Default ENV values
 
-### Define Default LANG LOCAL
-> DWL_LOCAL en_US.UTF-8
-
-### Define username:passwd for ssh access
-> DWL_USER_NAME username
-
-> DWL_USER_PASSWD secret
-
-### Define if ssh and sftp access are accepted
-> DWL_SSH_ACCESS false
-
-### Base activation
-
-### Apache2 activation
-
 ### Openssl activation
 
-> DWL_USER_DNS dev.davaskweblimited.com
+> DWL_USER_DNS docker.davaskweblimited.com
 
 > DWL_CERTBOT_EMAIL docker@davaskweblimited.com
-
-> DWL_USER_APACHE_CONF default-ssl
 
 > DWL_SSLKEY_C "EU"
 
@@ -40,13 +23,12 @@
 
 > DWL_SSLKEY_CN "davaskweblimited.com"
 
-Test your encryption with this url : "https://www.ssllabs.com/ssltest/analyze.html?d=${DWL_USER_DNS}&latest" once the container is up & running
+#### comments
+
+- Test your encryption with this url : "https://www.ssllabs.com/ssltest/analyze.html?d=${DWL_USER_DNS}&latest" once the container is up & running
+
+- The declaration of new certifications for the same domain name is 5 per 7 days
 
 ## LABEL
-> dwl.server.os="ubuntu 14.04"
 
-> dwl.server.base="ubuntu 14.04"
-
-> dwl.server.http="apache 2.4"
-
-> dwl.server.https="open ssl"
+> dwl.server.https="open ssl + certbot"
