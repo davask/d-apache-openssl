@@ -5,7 +5,6 @@ LABEL dwl.server.https="open ssl"
 # declare openssl
 ENV APACHE_SSL_DIR /etc/apache2/ssl
 ENV DWL_USER_DNS dev.davaskweblimited.com
-ENV DWL_USER_APACHE_CONF default-ssl
 ENV DWL_CERTBOT_EMAIL docker@davaskweblimited.com
 ENV DWL_SSLKEY_C "EU"
 ENV DWL_SSLKEY_ST "France"
@@ -24,8 +23,15 @@ RUN /bin/bash -c 'chmod a+x /usr/local/bin/certbot-auto'
 RUN /bin/bash -c 'certbot-auto --noninteractive --os-packages-only'
 RUN /bin/bash -c 'rm -rf /var/lib/apt/lists/*'
 
+RUN /bin/bash -c 'if [ -f /etc/apache2/sites-enabled/default-ssl.conf ]; then \
+    a2dissite default-ssl; \
+fi;'
+RUN /bin/bash -c 'if [ -f /etc/apache2/sites-available/default-ssl.conf ]; then \
+    rm /etc/apache2/sites-available/default-ssl.conf; \
+fi;'
+
 # Configure apache ssl
 COPY ./etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
 # Configure apache default-ssl.conf
-COPY ./etc/apache2/sites-enabled/default-ssl.conf.origin /etc/apache2/sites-enabled/default-ssl.conf.origin
+COPY ./etc/apache2/sites-enabled/virtualhost.conf.origin /etc/apache2/sites-enabled/virtualhost.conf.origin
 COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh

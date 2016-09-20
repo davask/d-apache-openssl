@@ -36,12 +36,10 @@ if [ "`find ${APACHE_SSL_DIR} -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ];
        -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key \
        -x509 -days 90 -out ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt \
        -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}";
-    if [ -f /etc/apache2/sites-enabled/${DWL_USER_APACHE_CONF}.conf ]; then
-        rm /etc/apache2/sites-enabled/${DWL_USER_APACHE_CONF}.conf;
-    fi
-    cp /etc/apache2/sites-enabled/${DWL_USER_APACHE_CONF}.conf.origin /etc/apache2/sites-enabled/${DWL_USER_APACHE_CONF}.conf;
-    sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" /etc/apache2/sites-enabled/${DWL_USER_APACHE_CONF}.conf;
-    sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" /etc/apache2/sites-enabled/${DWL_USER_APACHE_CONF}.conf;
+    cp -f /etc/apache2/sites-enabled/virtualhost.conf.origin /etc/apache2/sites-enabled/virtualhost.conf;
+    sed -i "s|# ServerName|ServerName ${DWL_USER_DNS}|g" /etc/apache2/sites-enabled/virtualhost.conf;
+    sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" /etc/apache2/sites-enabled/virtualhost.conf;
+    sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" /etc/apache2/sites-enabled/virtualhost.conf;
 fi
 
 if [ "`find /etc/lestencrypt/live/${DWL_USER_DNS} -type f &> /dev/null | wc -l`" = "0" ]; then

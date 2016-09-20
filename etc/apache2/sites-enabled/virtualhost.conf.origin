@@ -1,7 +1,15 @@
+<VirtualHost _default_:80>
+        ServerAdmin docker@davaskweblimited.com
+        DocumentRoot /var/www/html
+
+        ErrorLog /var/log/apache2/error.log
+        CustomLog /var/log/apache2/access.log combined
+</VirtualHost>
+
 <IfModule mod_ssl.c>
     <VirtualHost *:443>
-        ServerAdmin admin@davaskweblimited.com
-        ServerName dev.davaskweblimited.com
+        ServerAdmin docker@davaskweblimited.com
+        # ServerName
         DocumentRoot /var/www/html
 
         ErrorLog ${APACHE_LOG_DIR}/error.log

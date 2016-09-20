@@ -25,5 +25,5 @@ d-apache2-openssl:
   - /path/to/proxy/sites-enabled:/etc/apache2/sites-enabled
   - /path/to/files:/home/username/files
   - /path/to/ssl:/etc/apache2/ssl
-  - /path/to/lestencrypt:/etc/lestencrypt/live
+  - /path/to/lestencrypt:/etc/lestencrypt
   stdin_open: true
