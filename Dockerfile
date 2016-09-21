@@ -14,11 +14,6 @@ ENV DWL_SSLKEY_CN "davaskweblimited.com"
 RUN /bin/bash -c 'mkdir -p ${APACHE_SSL_DIR}'
 RUN /bin/bash -c 'chmod 700 ${APACHE_SSL_DIR}'
 
-RUN /bin/bash -c 'for conf in `find /etc/apache2/sites-enabled/ -type l`; do rm ${conf}; done;'
-RUN /bin/bash -c 'for conf in `find /etc/apache2/sites-available/ -type f`; do rm ${conf}; done;'
-# Configure apache virtualhost.conf
-COPY ./etc/apache2/sites-available/virtualhost.conf /etc/apache2/sites-available/${DWL_USER_DNS}.conf
-
 COPY ./etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
 RUN /bin/bash -c 'a2enmod ssl'
 
