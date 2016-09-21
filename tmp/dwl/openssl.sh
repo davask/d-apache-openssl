@@ -14,5 +14,4 @@ if [ "`find ${APACHE_SSL_DIR} -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ];
     sed -i "s|# SSLCertificateFile|SSLCertificateFile `echo ${APACHE_SSL_DIR}/${DWL_USER_DNS}`/apache.crt|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
     sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile `echo ${APACHE_SSL_DIR}/${DWL_USER_DNS}`/apache.key|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
 
-    service apache2 reload;
 fi
