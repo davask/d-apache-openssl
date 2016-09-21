@@ -22,7 +22,7 @@ d-apache2-openssl:
   image: davask/d-apache-openssl2:2.4-u14.04
   volumes:
   - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
-  - /home/dwl/projects/factory/docker-dev/sites-enabled:/etc/apache2/sites-enabled
+  - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
   - /home/dwl/projects/factory/docker-dev/ssl:/etc/apache2/ssl
   - /home/dwl/projects/factory/docker-dev/lestencrypt:/etc/lestencrypt
   stdin_open: true
@@ -44,7 +44,7 @@ d-apache2:
   image: davask/d-apache2:2.4-u14.04
   volumes:
   - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
-  - /home/dwl/projects/factory/docker-dev/sites-enabled:/etc/apache2/sites-enabled
+  - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
   stdin_open: true
 
 d-base:

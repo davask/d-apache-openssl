@@ -9,8 +9,6 @@ see [FROM IMAGE README.md](https://github.com/davask/d-apache2)
 
 ### Openssl activation
 
-> DWL_USER_DNS docker.davaskweblimited.com
-
 > DWL_CERTBOT_EMAIL docker@davaskweblimited.com
 
 > DWL_SSLKEY_C "EU"
@@ -28,6 +26,8 @@ see [FROM IMAGE README.md](https://github.com/davask/d-apache2)
 - Test your encryption with this url : "https://www.ssllabs.com/ssltest/analyze.html?d=${DWL_USER_DNS}&latest" once the container is up & running
 
 - The declaration of new certifications for the same domain name is 5 per 7 days
+
+# check for Unsupported filesystem layout. sites-available/enabled expected.
 
 ## LABEL
 
