@@ -11,7 +11,4 @@ echo ">> apache2 initialized";
 . /tmp/dwl/openssl.sh
 echo ">> Openssl initialized";
 
-. /tmp/dwl/certbot.sh
-echo ">> certbot initialized";
-
 . /tmp/dwl/keeprunning.sh
