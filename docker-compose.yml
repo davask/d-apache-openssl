@@ -17,6 +17,7 @@ d-apache2-openssl:
   volumes:
   - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
   - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
+  - /home/dwl/projects/factory/docker-dev/ssl:/etc/apache2/ssl
   stdin_open: true
 
 d-apache2:

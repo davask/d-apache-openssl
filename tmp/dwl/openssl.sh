@@ -1,4 +1,4 @@
-if [ "`find ${APACHE_SSL_DIR} -type d -name "${DWL_USER_DNS}" | wc -l`" = "0" ]; then
+if [ "`find ${APACHE_SSL_DIR}/${DWL_USER_DNS} -type f &> /dev/null | wc -l`" = "0" ]; then
 
     echo "> configure ssl";
 
