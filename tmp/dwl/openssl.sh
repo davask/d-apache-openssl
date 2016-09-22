@@ -20,24 +20,22 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
       DWL_USER_DNS_SERVERNAME=`echo "${DWL_USER_DNS}" | awk -F '[\.]' '{print $(NF-1)"."$NF}'`;
 
-      sed -i "s|# ServerName|ServerName ${DWL_USER_DNS_SERVERNAME}|g" \
-          /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+      sed -i "s|# ServerName|ServerName ${DWL_USER_DNS_SERVERNAME}|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
 
-      sed -i "s|# ServerAlias|ServerAlias ${DWL_USER_DNS}|g" \
-          /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+      sed -i "s|# ServerAlias|ServerAlias ${DWL_USER_DNS}|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
 
-      sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS_SERVERNAME}/apache.crt|g" \
-          /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+      sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS_SERVERNAME}/apache.crt|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
 
-      sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS_SERVERNAME}/apache.key|g" \
-          /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+      sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS_SERVERNAME}/apache.key|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+
     else
-      sed -i "s|# ServerName|ServerName ${DWL_USER_DNS}|g" \
-          /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
-      sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" \
-          /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
-      sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" \
-          /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+
+      sed -i "s|# ServerName|ServerName ${DWL_USER_DNS}|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+
+      sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+
+      sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" /etc/apache2/sites-available/${DWL_USER_DNS}.conf;
+
     fi
   fi
 
