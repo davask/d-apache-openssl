@@ -6,6 +6,9 @@ echo ">> Ubuntu initialized";
 
 echo ">> Base initialized";
 
+. /tmp/dwl/activateconf.sh
+echo ">> dwl conf activated";
+
 . /tmp/dwl/openssl.sh
 echo ">> Openssl initialized";
 
