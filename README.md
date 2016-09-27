@@ -1,19 +1,24 @@
 # dockerfile
 
+see [FROM IMAGE README.md](https://github.com/davask/d-apache)
+
+## Open port
+- 443
+
 ## Default ENV values
 
-Define Default LANG LOCAL
-> DWL_LOCAL en_US.UTF-8
+### Openssl activation
 
-Define username:passwd for ssh access
-> DWL_USER_NAME dwl
-> DWL_USER_PASSWD dwl
+> DWL_SSLKEY_C "EU"
 
-Define openssl dns
-> DWL_USER_DNS dev.davaskweblimited.com
+> DWL_SSLKEY_ST "France"
+
+> DWL_SSLKEY_L "Vannes"
+
+> DWL_SSLKEY_O "davask web limited - docker container"
+
+> DWL_SSLKEY_CN "davaskweblimited.com"
 
 ## LABEL
 
-> dwl.server.http="apache 2.4"
-> dwl.server.os="ubuntu 14.04"
-> dwl.server.https="open ssl"
+> dwl.server.https="openssl"

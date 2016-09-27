@@ -1,15 +1,21 @@
-d-apache2-openssl:
+d-apache-openssl:
   ports:
-  - 65500:22/tcp
-  - 65501:80/tcp
-  - 65502:443/tcp
+  - 65505:22/tcp
+  - 65506:80/tcp
+  - 443:443/tcp
   environment:
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_USER_DNS: dev.davaskweblimited.com
+    DWL_SSH_ACCESS: 'true'
+    DWL_USER_NAME: username
+    DWL_USER_PASSWD: secret
+    DWL_USER_ID: '1000'
   labels:
-    io.rancher.container.pull_image: always
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
   tty: true
-  image: davask/d-apache2:2.4-u14.04
+  hostname: openssl.davaskweblimited.com
+  image: davask/d-apache-openssl:2.4-u16.04
+  volumes:
+  - /path/to/files:/home/username/files
+  - /path/to/sites-available:/etc/apache2/sites-available
+  - /path/to/ssl:/etc/apache2/ssl
   stdin_open: true
+
