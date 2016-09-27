@@ -1,75 +1,21 @@
-d-apache2-openssl:
+d-apache-openssl:
   ports:
   - 65505:22/tcp
   - 65506:80/tcp
   - 443:443/tcp
   environment:
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
     DWL_SSH_ACCESS: 'true'
+    DWL_USER_NAME: username
+    DWL_USER_PASSWD: secret
     DWL_USER_ID: '1000'
   labels:
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
   tty: true
   hostname: openssl.davaskweblimited.com
-  image: davask/d-apache2-openssl:2.4-u14.04
+  image: davask/d-apache-openssl:2.4-u14.04
   volumes:
-  - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
-  - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
-  - /home/dwl/projects/factory/docker-dev/ssl:/etc/apache2/ssl
+  - /path/to/files:/home/username/files
+  - /path/to/sites-available:/etc/apache2/sites-available
+  - /path/to/ssl:/etc/apache2/ssl
   stdin_open: true
 
-d-apache2:
-  ports:
-  - 65503:22/tcp
-  - 65504:80/tcp
-  environment:
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_SSH_ACCESS: 'true'
-    DWL_USER_ID: '1000'
-  labels:
-    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
-  tty: true
-  hostname: apache2.davaskweblimited.com
-  image: davask/d-apache2:2.4-u14.04
-  volumes:
-  - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
-  - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
-  stdin_open: true
-
-d-base:
-  ports:
-  - 65501:22/tcp
-  environment:
-    DWL_SSH_ACCESS: 'true'
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_USER_ID: '1000'
-  labels:
-    io.rancher.container.start_once: 'true'
-    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
-  tty: true
-  hostname: base.davaskweblimited.com
-  image: davask/d-base:u14.04
-  volumes:
-  - /home/dwl/projects/factory/docker-dev:/home/dwl
-  stdin_open: true
-
-d-ubuntu:
-  ports:
-  - 65500:22/tcp
-  environment:
-    DWL_SSH_ACCESS: 'true'
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_USER_ID: '1000'
-  labels:
-    io.rancher.container.start_once: 'true'
-    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
-  tty: true
-  hostname: ubuntu.davaskweblimited.com
-  image: davask/d-ubuntu:14.04
-  volumes:
-  - /home/dwl/projects/factory/docker-dev:/home/dwl
-  stdin_open: true
