@@ -1,7 +1,18 @@
-FROM davask/d-apache:2.4-u14.04
-MAINTAINER davask <docker@davaskweblimited.com>
-LABEL dwl.server.https="openssl"
+#/usr/bin/env bash
 
+branch=${1};
+parentBranch=${2};
+rootDir=${3};
+buildDir=${4};
+
+##############
+# Dockerfile #
+##############
+
+echo "FROM davask/d-apache:${parentBranch}
+MAINTAINER davask <docker@davaskweblimited.com>
+LABEL dwl.server.https=\"openssl\"" > ${rootDir}/Dockerfile
+echo '
 # declare openssl
 ENV APACHE_SSL_DIR /etc/apache2/ssl
 ENV DWL_SSLKEY_C "EU"
@@ -28,4 +39,6 @@ EXPOSE 443
 
 COPY ./build/dwl/openssl.sh /dwl/openssl.sh
 COPY ./build/dwl/init.sh /dwl/init.sh
+' >> ${rootDir}/Dockerfile
 
+echo "Dockerfile generated with openssl";

@@ -3,6 +3,7 @@
 see [FROM IMAGE README.md](https://github.com/davask/d-apache)
 
 ## Open port
+
 - 443
 
 ## Default ENV values
@@ -19,6 +20,17 @@ see [FROM IMAGE README.md](https://github.com/davask/d-apache)
 
 > DWL_SSLKEY_CN "davaskweblimited.com"
 
+## virtualhost automatic conf
+
+> # ServerName
+
+> # ServerAlias
+
+> # SSLCertificateFile
+
+> # SSLCertificateKeyFile
+
 ## LABEL
 
-> dwl.server.https="openssl"
+> dwl.server.http="openssl"
+
