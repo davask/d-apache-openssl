@@ -10,6 +10,11 @@ d-apache:
     DWL_LOCAL_LANG: en_US:en
     DWL_USER_NAME: username
     DWL_SSH_ACCESS: 'true'
+    DWL_SSLKEY_C: EU
+    DWL_SSLKEY_ST: France
+    DWL_SSLKEY_L: Vannes
+    DWL_SSLKEY_O: davask web limited - docker container
+    DWL_SSLKEY_CN: davaskweblimited.com
   log_driver: syslog
   labels:
     io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate

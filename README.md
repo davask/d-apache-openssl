@@ -22,6 +22,10 @@ see [FROM IMAGE README.md](https://github.com/davask/d-apache)
 
 ## virtualhost automatic conf
 
+> # ServerAdmin
+
+> # DocumentRoot
+
 > # ServerName
 
 > # ServerAlias

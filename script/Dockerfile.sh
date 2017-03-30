@@ -33,7 +33,6 @@ RUN a2enmod ssl
 
 # Configure apache virtualhost.conf
 COPY ./build/dwl/default/etc/apache2/sites-available/0000-docker.davaskweblimited.com-443.conf.dwl /dwl/default/etc/apache2/sites-available/0000-docker.davaskweblimited.com-443.conf.dwl
-RUN cp -rdf /dwl/default/etc/apache2/sites-available/0000-docker.davaskweblimited.com-443.conf.dwl /etc/apache2/sites-available/0000-docker.davaskweblimited.com-443.conf.dwl
 
 EXPOSE 443
 
