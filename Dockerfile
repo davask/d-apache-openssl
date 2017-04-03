@@ -21,7 +21,7 @@ COPY ./build/dwl/default/etc/apache2/mods-available/ssl.conf /etc/apache2/mods-a
 RUN a2enmod ssl
 
 # Configure apache virtualhost.conf
-COPY ./build/dwl/default/etc/apache2/sites-available/0000-docker.davaskweblimited.com-443.conf.dwl /dwl/default/etc/apache2/sites-available/0000-docker.davaskweblimited.com-443.conf.dwl
+COPY ./build/dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl /dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl
 
 EXPOSE 443
 
