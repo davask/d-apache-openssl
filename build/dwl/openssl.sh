@@ -8,30 +8,34 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
     DWL_USER_DNS=`echo ${DWL_USER_DNS_DATA} | awk -F '[_]' '{print $2}'`;
     DWL_USER_DNS_PORT=`echo ${DWL_USER_DNS_DATA} | awk -F '[_]' '{print $3}'`;
+    DWL_USER_DNS_PORT_CONTAINER=`echo ${DWL_USER_DNS_DATA} | awk -F '[_]' '{print $1}'`;
     DWL_USER_DNS_SERVERNAME=`echo "${DWL_USER_DNS}" | awk -F '[\.]' '{print $(NF-1)"."$NF}'`;
 
-    echo "> configure openssl virtualhost for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
+    if [ "$DWL_USER_DNS_PORT_CONTAINER" != "443" ]; then
 
-    if [ ! -d ${APACHE_SSL_DIR}/${DWL_USER_DNS} ]; then
-        mkdir -p ${APACHE_SSL_DIR}/${DWL_USER_DNS};
-        chmod 700 ${APACHE_SSL_DIR}/${DWL_USER_DNS};
-    fi
+        echo "> configure openssl virtualhost for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
 
-    if [ "`find ${APACHE_SSL_DIR}/${DWL_USER_DNS} -type f | wc -l`" = "0" ]; then
+        if [ ! -d ${APACHE_SSL_DIR}/${DWL_USER_DNS} ]; then
+            mkdir -p ${APACHE_SSL_DIR}/${DWL_USER_DNS};
+            chmod 700 ${APACHE_SSL_DIR}/${DWL_USER_DNS};
+        fi
 
-        echo ">> Generate ssl for ${DWL_USER_DNS}";
+        if [ "`find ${APACHE_SSL_DIR}/${DWL_USER_DNS} -type f | wc -l`" = "0" ]; then
 
-        . ${dwlDir}/virtualhost.sh "${DWL_USER_DNS}" "${DWL_USER_DNS_CONF}" "${DWL_USER_DNS_SERVERNAME}"
+            echo ">> Generate ssl for ${DWL_USER_DNS}";
 
-        sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" ${DWL_USER_DNS_CONF};
+            . ${dwlDir}/virtualhost.sh "${DWL_USER_DNS}" "${DWL_USER_DNS_CONF}" "${DWL_USER_DNS_SERVERNAME}"
 
-        sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" ${DWL_USER_DNS_CONF};
+            sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" ${DWL_USER_DNS_CONF};
 
-        openssl req \
-            -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key \
-            -x509 -days 90 -out ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt \
-            -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}";
+            sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" ${DWL_USER_DNS_CONF};
 
+            openssl req \
+                -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key \
+                -x509 -days 90 -out ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt \
+                -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}";
+
+        fi
     fi
 
 done;
