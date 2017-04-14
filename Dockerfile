@@ -1,4 +1,4 @@
-FROM davask/d-apache:u14.04
+FROM davask/d-apache:2.4-u14.04
 MAINTAINER davask <docker@davaskweblimited.com>
 LABEL dwl.server.https="openssl"
 
