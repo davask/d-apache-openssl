@@ -38,10 +38,28 @@
         },{
             "name": "DWL_HTTP_SHIELD",
             "label": "htpasswd activated [false]"
+        },{
+            "name": "DWL_SSLKEY_C",
+            "label": "Country Name (2 letter code) [EU]"
+        },{
+            "name": "DWL_SSLKEY_ST",
+            "label": "State or Province Name (full name) [France]"
+        },{
+            "name": "DWL_SSLKEY_L",
+            "label": "Locality Name (eg, city) [Vannes]"
+        },{
+            "name": "DWL_SSLKEY_O",
+            "label": "Organization Name (eg, company) [davask web limited - docker container]"
+        },{
+            "name": "DWL_SSLKEY_CN",
+            "label": "Common Name (e.g. server FQDN or YOUR name) [davaskweblimited.com]"
         }
     ],
     "volumes": [
-        "/home/username"
+        "/home/username,
+/var/log/apache2,
+/etc/apache2/sites-available,
+/etc/apache2/ssl"
     ]
   }
 ]
