@@ -24,12 +24,6 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
             echo ">> Generate ssl for ${DWL_USER_DNS}";
 
-            . ${dwlDir}/virtualhost.sh "${DWL_USER_DNS}" "${DWL_USER_DNS_CONF}" "${DWL_USER_DNS_SERVERNAME}"
-
-            sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" ${DWL_USER_DNS_CONF};
-
-            sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" ${DWL_USER_DNS_CONF};
-
             openssl req \
                 -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key \
                 -x509 -days 90 -out ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt \
