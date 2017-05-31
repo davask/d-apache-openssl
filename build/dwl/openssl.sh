@@ -20,7 +20,7 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
             chmod 700 ${APACHE_SSL_DIR}/${DWL_USER_DNS};
         fi
 
-        if [ "`find ${APACHE_SSL_DIR}/${DWL_USER_DNS} -type f | wc -l`" = "0" ]; then
+        if [ "`find ${APACHE_SSL_DIR}/${DWL_USER_DNS} -type f | wc -l`" == "0" ]; then
 
             echo ">> Generate ssl for ${DWL_USER_DNS}";
 
