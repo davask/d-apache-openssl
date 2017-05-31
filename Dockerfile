@@ -1,5 +1,6 @@
 FROM davask/d-apache:2.4-u14.04
 MAINTAINER davask <docker@davaskweblimited.com>
+USER root
 LABEL dwl.server.https="openssl"
 
 # declare openssl
@@ -28,4 +29,5 @@ EXPOSE 443
 COPY ./build/dwl/openssl.sh /dwl/openssl.sh
 COPY ./build/dwl/virtualhost-ssl.sh /dwl/virtualhost-ssl.sh
 COPY ./build/dwl/init.sh /dwl/init.sh
+USER admin
 

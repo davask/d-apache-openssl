@@ -11,6 +11,7 @@ buildDir=${4};
 
 echo "FROM davask/d-apache:${parentBranch}
 MAINTAINER davask <docker@davaskweblimited.com>
+USER root
 LABEL dwl.server.https=\"openssl\"" > ${rootDir}/Dockerfile
 echo '
 # declare openssl
@@ -39,6 +40,7 @@ EXPOSE 443
 COPY ./build/dwl/openssl.sh /dwl/openssl.sh
 COPY ./build/dwl/virtualhost-ssl.sh /dwl/virtualhost-ssl.sh
 COPY ./build/dwl/init.sh /dwl/init.sh
+USER admin
 ' >> ${rootDir}/Dockerfile
 
 echo "Dockerfile generated with openssl";
