@@ -3,7 +3,7 @@
     "title": "Apache 2.4 + SSL",
     "description": "Apache 2.4 + openssl",
     "logo": "https://www.ssl247.co.uk/img/Free_SSL_logo_rounded.png",
-    "image": "davask/d-apache-openssl:2.4-u14.04",
+    "image": "davask/d-apache-openssl:2.4-d8.8",
     "ports": [
         "22/tcp",
         "80/tcp",
@@ -58,7 +58,7 @@
         }
     ],
     "volumes": [
-        "/home/username",
+        "/home/admin",
         "/var/log/apache2",
         "/etc/apache2/sites-available",
         "/etc/apache2/ssl"

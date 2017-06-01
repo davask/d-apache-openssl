@@ -5,7 +5,7 @@ dwlDir="/dwl";
 . ${dwlDir}/envvar.sh
 . ${dwlDir}/user.sh
 . ${dwlDir}/ssh.sh
-echo ">> Ubuntu initialized";
+echo ">> Os initialized";
 
 echo ">> Base initialized";
 

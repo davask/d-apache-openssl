@@ -16,7 +16,7 @@ d-apache:
     DWL_SSLKEY_L: Vannes
     DWL_SSLKEY_O: davask web limited - docker container
     DWL_SSLKEY_CN: davaskweblimited.com
-  image: davask/d-apache-openssl:2.4-u14.04
+  image: davask/d-apache-openssl:2.4-d8.8
   hostname: localhost
   net: bridge
   volumes:
