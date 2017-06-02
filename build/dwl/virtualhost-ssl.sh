@@ -1,6 +1,6 @@
 #! /bin/bash
 
-for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
+for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
     DWL_USER_DNS_CONF=${conf};
 
@@ -22,8 +22,8 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
         echo "Update SSL Certificat for domain";
 
-        sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" ${DWL_USER_DNS_CONF};
-        sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" ${DWL_USER_DNS_CONF};
+        sudo sed -i "s|# SSLCertificateFile|SSLCertificateFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt|g" ${DWL_USER_DNS_CONF};
+        sudo sed -i "s|# SSLCertificateKeyFile|SSLCertificateKeyFile ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key|g" ${DWL_USER_DNS_CONF};
     fi
 
 done;

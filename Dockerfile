@@ -29,5 +29,6 @@ EXPOSE 443
 COPY ./build/dwl/openssl.sh /dwl/openssl.sh
 COPY ./build/dwl/virtualhost-ssl.sh /dwl/virtualhost-ssl.sh
 COPY ./build/dwl/init.sh /dwl/init.sh
+RUN chown root:sudo -R /dwl
 USER admin
 

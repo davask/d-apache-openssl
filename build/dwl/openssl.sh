@@ -1,6 +1,6 @@
 #! /bin/bash
 
-for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
+for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
     DWL_USER_DNS_CONF=${conf};
 
@@ -16,15 +16,15 @@ for conf in `find /etc/apache2/sites-available -type f -name "*.conf"`; do
         echo "> configure openssl virtualhost for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
 
         if [ ! -d ${APACHE_SSL_DIR}/${DWL_USER_DNS} ]; then
-            mkdir -p ${APACHE_SSL_DIR}/${DWL_USER_DNS};
-            chmod 700 ${APACHE_SSL_DIR}/${DWL_USER_DNS};
+            sudo mkdir -p ${APACHE_SSL_DIR}/${DWL_USER_DNS};
+            sudo chmod 700 ${APACHE_SSL_DIR}/${DWL_USER_DNS};
         fi
 
-        if [ "`find ${APACHE_SSL_DIR}/${DWL_USER_DNS} -type f | wc -l`" == "0" ]; then
+        if [ "`sudo find ${APACHE_SSL_DIR}/${DWL_USER_DNS} -type f | wc -l`" == "0" ]; then
 
             echo ">> Generate ssl for ${DWL_USER_DNS}";
 
-            openssl req \
+            sudo openssl req \
                 -newkey rsa:2048 -nodes -keyout ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key \
                 -x509 -days 90 -out ${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.crt \
                 -subj "/C=${DWL_SSLKEY_C}/ST=${DWL_SSLKEY_ST}/L=${DWL_SSLKEY_L}/O=${DWL_SSLKEY_O}/CN=${DWL_SSLKEY_CN}";
