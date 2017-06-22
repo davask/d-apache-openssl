@@ -1,5 +1,7 @@
 #! /bin/bash
 
+cd .; cd -;
+
 dwlDir="/dwl";
 
 . ${dwlDir}/envvar.sh
