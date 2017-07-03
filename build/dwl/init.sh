@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh -e
 
 cd .; cd -;
 
@@ -29,4 +29,3 @@ echo ">> SSL initialized";
 . ${dwlDir}/apache2.sh
 echo ">> Apache2 initialized";
 
-. ${dwlDir}/keeprunning.sh

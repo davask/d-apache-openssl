@@ -29,36 +29,33 @@
             "name": "DWL_USER_PASSWD",
             "label": "User password for ssh access [secret]"
         },{
-            "name": "DWL_KEEP_RUNNING",
-            "label": "Keep container running [true]"
-        },{
             "name": "DWL_HTTP_SERVERADMIN",
-            "label": "Server Admin email address [admin@domain.name]"
-        },{
+            "label": "Server Admin email address [admin@localhost]"
+        }{
             "name": "DWL_HTTP_DOCUMENTROOT",
             "label": "Document root [/var/www/html]"
-        },{
+        }{
             "name": "DWL_HTTP_SHIELD",
             "label": "htpasswd activated [false]"
-        },{
+        }{
             "name": "DWL_SSLKEY_C",
             "label": "Country Name (2 letter code) [EU]"
-        },{
+        }{
             "name": "DWL_SSLKEY_ST",
             "label": "State or Province Name (full name) [France]"
-        },{
+        }{
             "name": "DWL_SSLKEY_L",
             "label": "Locality Name (eg, city) [Vannes]"
-        },{
+        }{
             "name": "DWL_SSLKEY_O",
             "label": "Organization Name (eg, company) [davask web limited - docker container]"
-        },{
+        }{
             "name": "DWL_SSLKEY_CN",
             "label": "Common Name (e.g. server FQDN or YOUR name) [davaskweblimited.com]"
         }
     ],
     "volumes": [
-        "/home/admin",
+        "/home/username",
         "/var/log/apache2",
         "/etc/apache2/sites-available",
         "/etc/apache2/ssl"
