@@ -26,6 +26,9 @@ COPY ./build/dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimite
 
 EXPOSE 443
 
-COPY ./build/dwl/openssl.sh ./build/dwl/virtualhost-ssl.sh ./build/dwl/init.sh /dwl/
+COPY ./build/dwl/openssl.sh \
+./build/dwl/virtualhost-ssl.sh \
+./build/dwl/init.sh \
+/dwl/
 RUN chmod +x /dwl/init.sh && chown root:sudo -R /dwl
 USER admin
