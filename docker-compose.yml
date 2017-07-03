@@ -1,75 +1,31 @@
-d-apache-openssl:
+app:
   ports:
-  - 65505:22/tcp
-  - 65506:80/tcp
-  - 443:443/tcp
+    - 42002:22/tcp
+    - 42000:80/tcp
+    - 42003:443/tcp
   environment:
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_SSH_ACCESS: 'true'
+    DWL_LOCAL_LANG: 'en_US:en'
+    DWL_LOCAL: 'en_US.UTF-8'
+    DWL_USER_NAME: 'username'
+    DWL_SSH_ACCESS: 'false'
     DWL_USER_ID: '1000'
-  labels:
-    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
+    DWL_USER_PASSWD: 'secret'
+    DWL_HTTP_SERVERADMIN: 'admin@localhost'
+    DWL_HTTP_DOCUMENTROOT: '/var/www/html'
+    DWL_HTTP_SHIELD: 'false'
+    DWL_SSLKEY_C: 'EU'
+    DWL_SSLKEY_ST: 'France'
+    DWL_SSLKEY_L: 'Vannes'
+    DWL_SSLKEY_O: 'davask web limited - docker container'
+    DWL_SSLKEY_CN: 'davaskweblimited.com'
   tty: true
-  hostname: openssl.davaskweblimited.com
+  hostname: localhost
   image: davask/d-apache-openssl:2.4-u12.04
+  net: bridge
   volumes:
-  - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
-  - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
-  - /home/dwl/projects/factory/docker-dev/ssl:/etc/apache2/ssl
-  stdin_open: true
+    - ./volumes/home/username:/home/username
+    - ./volumes/var/log/apache2:/var/log/apache2
+    - ./volumes/etc/apache2/sites-available:/etc/apache2/sites-available
+    - ./volumes/etc/apache2/ssl:/etc/apache2/ssl
 
-d-apache:
-  ports:
-  - 65503:22/tcp
-  - 65504:80/tcp
-  environment:
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_SSH_ACCESS: 'true'
-    DWL_USER_ID: '1000'
-  labels:
-    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
-  tty: true
-  hostname: apache2.davaskweblimited.com
-  image: davask/d-apache:2.4-u12.04
-  volumes:
-  - /home/dwl/projects/factory/docker-dev/files:/home/dwl/files
-  - /home/dwl/projects/factory/docker-dev/sites-available:/etc/apache2/sites-available
-  stdin_open: true
-
-d-base:
-  ports:
-  - 65501:22/tcp
-  environment:
-    DWL_SSH_ACCESS: 'true'
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_USER_ID: '1000'
-  labels:
-    io.rancher.container.start_once: 'true'
-    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
-  tty: true
-  hostname: base.davaskweblimited.com
-  image: davask/d-base:u12.04
-  volumes:
-  - /home/dwl/projects/factory/docker-dev:/home/dwl
-  stdin_open: true
-
-d-ubuntu:
-  ports:
-  - 65500:22/tcp
-  environment:
-    DWL_SSH_ACCESS: 'true'
-    DWL_USER_NAME: dwl
-    DWL_USER_PASSWD: dwl
-    DWL_USER_ID: '1000'
-  labels:
-    io.rancher.container.start_once: 'true'
-    io.rancher.scheduler.affinity:host_label: dwl=dwlComPrivate
-  tty: true
-  hostname: ubuntu.davaskweblimited.com
-  image: davask/d-ubuntu:14.04
-  volumes:
-  - /home/dwl/projects/factory/docker-dev:/home/dwl
-  stdin_open: true
+# export COMPOSE_HTTP_TIMEOUT=600; docker-compose -f /home/dwl/docker-images/http/d-apache-openssl/docker-compose.yml up -d
