@@ -1,5 +1,6 @@
 FROM davask/d-apache:2.4-u16.04
 MAINTAINER davask <docker@davaskweblimited.com>
+USER root
 LABEL dwl.server.https="openssl"
 
 # declare openssl
@@ -11,14 +12,23 @@ ENV DWL_SSLKEY_O "davask web limited - docker container"
 ENV DWL_SSLKEY_CN "davaskweblimited.com"
 
 # create apache2 ssl directories
-RUN mkdir -p ${APACHE_SSL_DIR}
-RUN chmod 700 ${APACHE_SSL_DIR}
+RUN mkdir -p /etc/apache2/ssl
+RUN chmod 700 /etc/apache2/ssl
 
-RUN a2dissite default-ssl.conf
+RUN rm -f /etc/apache2/sites-enabled/default-ssl.conf &>> null
 RUN rm -f /etc/apache2/sites-available/default-ssl.conf &>> null
 
-COPY ./etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
+COPY ./build/dwl/default/etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
 RUN a2enmod ssl
 
-COPY ./tmp/dwl/openssl.sh /tmp/dwl/openssl.sh
-COPY ./tmp/dwl/init.sh /tmp/dwl/init.sh
+# Configure apache virtualhost.conf
+COPY ./build/dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl /dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl
+
+EXPOSE 443
+
+COPY ./build/dwl/openssl.sh \
+./build/dwl/virtualhost-ssl.sh \
+./build/dwl/init.sh \
+/dwl/
+RUN chmod +x /dwl/init.sh && chown root:sudo -R /dwl
+USER admin
