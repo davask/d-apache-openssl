@@ -51,5 +51,12 @@
 
 ## virtualhost automatic conf
 
+```bash
 
+# ServerAdmin
+# DocumentRoot
+# ServerName
+# ServerAlias
+
+```
 
