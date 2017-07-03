@@ -1,11 +1,13 @@
-#! /bin/bash
+#! /bin/sh -e
+
+cd .; cd -;
 
 dwlDir="/dwl";
 
 . ${dwlDir}/envvar.sh
 . ${dwlDir}/user.sh
 . ${dwlDir}/ssh.sh
-echo ">> Ubuntu initialized";
+echo ">> Os initialized";
 
 echo ">> Base initialized";
 
@@ -27,4 +29,3 @@ echo ">> SSL initialized";
 . ${dwlDir}/apache2.sh
 echo ">> Apache2 initialized";
 
-. ${dwlDir}/keeprunning.sh

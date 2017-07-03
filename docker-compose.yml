@@ -1,28 +1,31 @@
-d-apache:
+app:
   ports:
-  - 65500:80/tcp
-  - 65502:22/tcp
-  - 65503:443/tcp
+    - 42002:22/tcp
+    - 42000:80/tcp
+    - 42003:443/tcp
   environment:
-    DWL_LOCAL: en_US.UTF-8
+    DWL_LOCAL_LANG: 'en_US:en'
+    DWL_LOCAL: 'en_US.UTF-8'
+    DWL_USER_NAME: 'username'
+    DWL_SSH_ACCESS: 'false'
     DWL_USER_ID: '1000'
-    DWL_USER_PASSWD: secret
-    DWL_LOCAL_LANG: en_US:en
-    DWL_USER_NAME: username
-    DWL_SSH_ACCESS: 'true'
-    DWL_SHIELD_HTTP: 'false'
-    DWL_SSLKEY_C: EU
-    DWL_SSLKEY_ST: France
-    DWL_SSLKEY_L: Vannes
-    DWL_SSLKEY_O: davask web limited - docker container
-    DWL_SSLKEY_CN: davaskweblimited.com
-  image: davask/d-apache-openssl:2.4-u14.04
+    DWL_USER_PASSWD: 'secret'
+    DWL_HTTP_SERVERADMIN: 'admin@localhost'
+    DWL_HTTP_DOCUMENTROOT: '/var/www/html'
+    DWL_HTTP_SHIELD: 'false'
+    DWL_SSLKEY_C: 'EU'
+    DWL_SSLKEY_ST: 'France'
+    DWL_SSLKEY_L: 'Vannes'
+    DWL_SSLKEY_O: 'davask web limited - docker container'
+    DWL_SSLKEY_CN: 'davaskweblimited.com'
+  tty: true
   hostname: localhost
+  image: davask/d-apache-openssl:2.4-u14.04
   net: bridge
   volumes:
-  - /home/dwl/docker-images/http/d-apache-openssl/build/etc/apache2/ssl:/etc/apache2/ssl
-  - /home/dwl/docker-images/http/d-apache-openssl/volumes/proxy/log/localhost/apache2:/var/log/apache2
-  - /home/dwl/docker-images/http/d-apache-openssl/volumes/home/username/http/app/sites-available:/etc/apache2/sites-available
-  - /home/dwl/docker-images/http/d-apache-openssl/volumes/home/username/files:/home/username/files
-  working_dir: /var/www/html
+    - ./volumes/home/username:/home/username
+    - ./volumes/var/log/apache2:/var/log/apache2
+    - ./volumes/etc/apache2/sites-available:/etc/apache2/sites-available
+    - ./volumes/etc/apache2/ssl:/etc/apache2/ssl
 
+# export COMPOSE_HTTP_TIMEOUT=600; docker-compose -f /home/dwl/docker-images/http/d-apache-openssl/docker-compose.yml up -d

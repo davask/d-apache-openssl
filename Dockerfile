@@ -12,8 +12,8 @@ ENV DWL_SSLKEY_O "davask web limited - docker container"
 ENV DWL_SSLKEY_CN "davaskweblimited.com"
 
 # create apache2 ssl directories
-RUN mkdir -p ${APACHE_SSL_DIR}
-RUN chmod 700 ${APACHE_SSL_DIR}
+RUN mkdir -p 
+RUN chmod 700 
 
 RUN rm -f /etc/apache2/sites-enabled/default-ssl.conf &>> null
 RUN rm -f /etc/apache2/sites-available/default-ssl.conf &>> null
@@ -26,8 +26,6 @@ COPY ./build/dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimite
 
 EXPOSE 443
 
-COPY ./build/dwl/openssl.sh /dwl/openssl.sh
-COPY ./build/dwl/virtualhost-ssl.sh /dwl/virtualhost-ssl.sh
-COPY ./build/dwl/init.sh /dwl/init.sh
+COPY ./build/dwl/openssl.sh ./build/dwl/virtualhost-ssl.sh ./build/dwl/init.sh /dwl/
+RUN chmod +x /dwl/init.sh && chown root:sudo -R /dwl
 USER admin
-
