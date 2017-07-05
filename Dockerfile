@@ -18,11 +18,11 @@ RUN chmod 700 ${APACHE_SSL_DIR}
 RUN rm -f /etc/apache2/sites-enabled/default-ssl.conf &>> null
 RUN rm -f /etc/apache2/sites-available/default-ssl.conf &>> null
 
-COPY ./build/dwl/default/etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
+COPY ./build/dwl/etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
 RUN a2enmod ssl
 
 # Configure apache virtualhost.conf
-COPY ./build/dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl /dwl/default/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl
+COPY ./build/dwl/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl /dwl/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl
 
 EXPOSE 443
 
