@@ -2,7 +2,7 @@
 
 for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
-    . ./vhost-env.conf;
+    . ${dwlDir}/vhost-env.sh;
 
     if [ "$DWL_USER_DNS_PORT" == "443" ]; then
 

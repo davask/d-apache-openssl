@@ -2,7 +2,7 @@
 
 for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
-    . ./vhost-env.conf;
+    . ${dwlDir}/vhost-env.sh;
 
     if [ "$DWL_USER_DNS_PORT" == "443" ]; then
         echo "> configure virtualhost-ssl for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
