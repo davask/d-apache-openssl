@@ -4,7 +4,7 @@ for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
     . ${dwlDir}/vhost-env.sh;
 
-    if [ "$DWL_USER_DNS_PORT" == "443" ]; then
+    if [ "${DWL_USER_DNS_PORT}" == "443" ]; then
 
         echo "> configure openssl virtualhost for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
 

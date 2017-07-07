@@ -1,31 +1,41 @@
-app:
-  ports:
-    - 42002:22/tcp
-    - 42000:80/tcp
-    - 42003:443/tcp
-  environment:
-    DWL_LOCAL_LANG: 'en_US:en'
-    DWL_LOCAL: 'en_US.UTF-8'
-    DWL_USER_NAME: 'username'
-    DWL_SSH_ACCESS: 'false'
-    DWL_USER_ID: '1000'
-    DWL_USER_PASSWD: 'secret'
-    DWL_HTTP_SERVERADMIN: 'admin@localhost'
-    DWL_HTTP_DOCUMENTROOT: '/var/www/html'
-    DWL_HTTP_SHIELD: 'false'
-    DWL_SSLKEY_C: 'EU'
-    DWL_SSLKEY_ST: 'France'
-    DWL_SSLKEY_L: 'Vannes'
-    DWL_SSLKEY_O: 'davask web limited - docker container'
-    DWL_SSLKEY_CN: 'davaskweblimited.com'
-  tty: true
-  hostname: localhost
-  image: davask/d-apache-openssl:2.4-u14.04
-  net: bridge
-  volumes:
-    - ./volumes/home/username:/home/username
-    - ./volumes/var/log/apache2:/var/log/apache2
-    - ./volumes/etc/apache2/sites-available:/etc/apache2/sites-available
-    - ./volumes/etc/apache2/ssl:/etc/apache2/ssl
+version:"3"
 
+services:
+  app:
+    ports:
+      - 42002:22/tcp
+      - 42000:80/tcp
+      - 42003:443/tcp
+    environment:
+      COMPOSE_PROJECT_NAME: container_name
+      DWL_LOCAL_LANG: 'en_US:en'
+      DWL_LOCAL: 'en_US.UTF-8'
+      DWL_USER_NAME: 'username'
+      DWL_SSH_ACCESS: 'false'
+      DWL_USER_ID: '1000'
+      DWL_USER_PASSWD: 'secret'
+      DWL_HTTP_SERVERADMIN: 'admin@localhost'
+      DWL_HTTP_DOCUMENTROOT: '/var/www/html'
+      DWL_HTTP_SHIELD: 'false'
+      DWL_SSLKEY_C: 'EU'
+      DWL_SSLKEY_ST: 'France'
+      DWL_SSLKEY_L: 'Vannes'
+      DWL_SSLKEY_O: 'davask web limited - docker container'
+      DWL_SSLKEY_CN: 'davaskweblimited.com'
+    tty: true
+    hostname: localhost
+    image: davask/d-apache-openssl:2.4-u14.04
+    networks:
+      - dwlhost
+    volumes:
+      - ./volumes/home/username:/home/username
+      - ./volumes/var/log/apache2:/var/log/apache2
+      - ./volumes/etc/apache2/sites-available:/etc/apache2/sites-available
+      - ./volumes/etc/apache2/ssl:/etc/apache2/ssl
+
+networks:
+    dwlhost:
+        external: true
+
+# docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 dwlhost
 # export COMPOSE_HTTP_TIMEOUT=600; docker-compose -f /home/dwl/docker-images/http/d-apache-openssl/docker-compose.yml up -d
