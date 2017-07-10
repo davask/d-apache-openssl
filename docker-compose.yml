@@ -10,12 +10,12 @@ services:
       COMPOSE_PROJECT_NAME: container_name
       DWL_LOCAL_LANG: 'en_US:en'
       DWL_LOCAL: 'en_US.UTF-8'
-      DWL_USER_NAME: 'username'
+      DWL_SUDO_USER: 'false'
       DWL_SSH_ACCESS: 'false'
       DWL_USER_ID: '1000'
       DWL_USER_PASSWD: 'secret'
       DWL_HTTP_SERVERADMIN: 'admin@localhost'
-      DWL_HTTP_DOCUMENTROOT: '/var/www/html'
+      DWL_HTTP_DOCUMENTROOT: '/var/www'
       DWL_HTTP_SHIELD: 'false'
       DWL_SSLKEY_C: 'EU'
       DWL_SSLKEY_ST: 'France'
@@ -25,13 +25,16 @@ services:
     tty: true
     hostname: localhost
     image: davask/d-apache-openssl:2.4-u16.04
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
     networks:
       - dwlhost
     volumes:
-      - ./volumes/home/username:/home/username
-      - ./volumes/var/log/apache2:/var/log/apache2
-      - ./volumes/etc/apache2/sites-available:/etc/apache2/sites-available
-      - ./volumes/etc/apache2/ssl:/etc/apache2/ssl
+      - ./volumes/home/host:/dwl/home/host
 
 networks:
     dwlhost:
