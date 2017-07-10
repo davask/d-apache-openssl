@@ -17,7 +17,7 @@
             "name": "DWL_LOCAL",
             "label": "Local [en_US.UTF-8]"
         },{
-            "name": "DWL_USER_NAME",
+            "name": "DWL_SUDO_USER",
             "label": "Username [username]"
         },{
             "name": "DWL_SSH_ACCESS",
