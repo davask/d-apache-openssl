@@ -17,17 +17,17 @@
             "name": "DWL_LOCAL",
             "label": "Local [en_US.UTF-8]"
         },{
-            "name": "DWL_SUDO_USER",
+            "name": "DWL_USER_NAME",
             "label": "Username [username]"
         },{
-            "name": "DWL_SSH_ACCESS",
-            "label": "Enable ssh access [false]"
+            "name": "DWL_USER_PASSWD",
+            "label": "User password for ssh access [secret]"
         },{
             "name": "DWL_USER_ID",
             "label": "User id [1000]"
         },{
-            "name": "DWL_USER_PASSWD",
-            "label": "User password for ssh access [secret]"
+            "name": "DWL_SSH_ACCESS",
+            "label": "Enable ssh access [false]"
         },{
             "name": "DWL_HTTP_SERVERADMIN",
             "label": "Server Admin email address [admin@localhost]"
