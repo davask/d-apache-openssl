@@ -35,6 +35,8 @@ services:
       - dwlhost
     volumes:
       - ./volumes/home/host:/dwl/home/host
+      - ./volumes/etc/apache2/sites-available:/dwl/etc/apache2/sites-available
+      - ./volumes/etc/apache2/ssl:/dwl/etc/apache2/ssl
 
 networks:
     dwlhost:
