@@ -33,7 +33,7 @@
             "label": "Server Admin email address [admin@localhost]"
         }{
             "name": "DWL_HTTP_DOCUMENTROOT",
-            "label": "Document root [/var/www/html]"
+            "label": "Document root [/var/www]"
         }{
             "name": "DWL_HTTP_SHIELD",
             "label": "htpasswd activated [false]"
@@ -55,10 +55,7 @@
         }
     ],
     "volumes": [
-        "/home/username",
-        "/var/log/apache2",
-        "/etc/apache2/sites-available",
-        "/etc/apache2/ssl"
+        "/home/host"
     ]
   }
 ]

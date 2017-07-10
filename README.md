@@ -20,7 +20,7 @@
 - APACHE_LOG_DIR: '/var/log/apache2'
 - APACHE_RUN_DIR: '/var/run/apache2'
 - DWL_HTTP_SERVERADMIN: 'admin@localhost'
-- DWL_HTTP_DOCUMENTROOT: '/var/www/html'
+- DWL_HTTP_DOCUMENTROOT: '/var/www'
 - DWL_HTTP_SHIELD: 'false'
 - DWL_SSLKEY_C: 'EU'
 - DWL_SSLKEY_ST: 'France'
@@ -30,10 +30,7 @@
 - APACHE_SSL_DIR: '/etc/apache2/ssl'
 ## Available volumes
 
-- /home/username
-- /var/log/apache2
-- /etc/apache2/sites-available
-- /etc/apache2/ssl
+- /home/host
 ## LABEL
 
 - dwl.server.os="apache 2.4-d8.8"
