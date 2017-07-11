@@ -9,10 +9,11 @@
 
 - DWL_LOCAL_LANG: 'en_US:en'
 - DWL_LOCAL: 'en_US.UTF-8'
+- DWL_USER_NAME: 'username'
+- DWL_USER_PASSWD: 'secret'
+- DWL_USER_ID: '1000'
 - DWL_SUDO_USER: 'false'
 - DWL_SSH_ACCESS: 'false'
-- DWL_USER_ID: '1000'
-- DWL_USER_PASSWD: 'secret'
 - APACHE_LOCK_DIR: '/var/lock/apache2'
 - APACHE_PID_FILE: '/var/run/apache2.pid'
 - APACHE_RUN_USER: 'www-data'
@@ -31,6 +32,8 @@
 ## Available volumes
 
 - /home/host
+- /etc/apache2/sites-available
+- /etc/apache2/ssl
 ## LABEL
 
 - dwl.server.os="apache 2.4-u16.04"
