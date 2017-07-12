@@ -1,6 +1,6 @@
-#!/bin/sh -e
+#!/bin/bash
 
-cd .; cd -;
+cd ~/;
 
 dwlDir="/dwl";
 
