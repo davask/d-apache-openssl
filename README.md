@@ -6,8 +6,8 @@
 [![[dwl] apache-openssl:2.4-d8.8 image][badge-docker]](https://hub.docker.com/r/davask/d-apache-openssl/)
 
 [badge-docker]: https://dockeri.co/image/davask/d-apache-openssl "[dwl] apache-openssl:2.4-d8.8 image"
-[badge-shields]: https://img.shields.io/badge/davask%2Fd--apache--openssl-env prod-brightgreen.svg?style=flat "[dwl] apache-openssl:2.4-d8.8 in prod"
-[badge-fossa]: https://img.shields.io/badge/davask%2Fd--apache--openssl-license MIT-brightgreen.svg?style=flat "[dwl] apache-openssl:2.4-d8.8 license"
+[badge-shields]: https://img.shields.io/badge/davask%2Fd--apache--openssl-env_prod-brightgreen.svg?style=flat "[dwl] apache-openssl:2.4-d8.8 in prod"
+[badge-fossa]: https://img.shields.io/badge/davask%2Fd--apache--openssl-license_MIT-brightgreen.svg?style=flat "[dwl] apache-openssl:2.4-d8.8 license"
 
 ## Exposed port
 
