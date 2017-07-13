@@ -1,11 +1,13 @@
-#! /bin/bash
+#!/bin/bash
 
 for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
     . ${dwlDir}/vhost-env.sh;
 
     if [ "$DWL_USER_DNS_PORT" == "443" ]; then
+
         echo "> configure virtualhost-ssl for ${DWL_USER_DNS} with path ${DWL_USER_DNS_CONF}";
+
         if [ ! -f "/etc/letsencrypt/live/${DWL_USER_DNS}/cert.pem" ] \
         && [ -f "${APACHE_SSL_DIR}/${DWL_USER_DNS}/apache.key" ]; then
 
