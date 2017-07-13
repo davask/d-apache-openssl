@@ -1,5 +1,14 @@
 # dockerfile
 
+[![[dwl] apache-openssl:2.4-u14.04 in prod][badge-shields]](https://hub.docker.com/r/davask/d-apache-openssl/)
+[![[dwl] apache-openssl:2.4-u14.04 license][badge-fossa]](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fdavask%2Fd-apache-openssl?ref=badge_shield)
+
+[![[dwl] apache-openssl:2.4-u14.04 image][badge-docker]](https://hub.docker.com/r/davask/d-apache-openssl/)
+
+[badge-docker]: https://dockeri.co/image/davask/d-apache-openssl "[dwl] apache-openssl:2.4-u14.04 image"
+[badge-shields]: https://img.shields.io/badge/davask%2Fd--apache--openssl-env_prod-brightgreen.svg?style=flat "[dwl] apache-openssl:2.4-u14.04 in prod"
+[badge-fossa]: https://img.shields.io/badge/davask%2Fd--apache--openssl-license_MIT-brightgreen.svg?style=flat "[dwl] apache-openssl:2.4-u14.04 license"
+
 ## Exposed port
 
 - 22
@@ -10,9 +19,10 @@
 - DWL_LOCAL_LANG: 'en_US:en'
 - DWL_LOCAL: 'en_US.UTF-8'
 - DWL_USER_NAME: 'username'
-- DWL_SSH_ACCESS: 'false'
-- DWL_USER_ID: '1000'
 - DWL_USER_PASSWD: 'secret'
+- DWL_USER_ID: '1000'
+- DWL_SUDO_USER: 'false'
+- DWL_SSH_ACCESS: 'false'
 - APACHE_LOCK_DIR: '/var/lock/apache2'
 - APACHE_PID_FILE: '/var/run/apache2.pid'
 - APACHE_RUN_USER: 'www-data'
@@ -20,7 +30,7 @@
 - APACHE_LOG_DIR: '/var/log/apache2'
 - APACHE_RUN_DIR: '/var/run/apache2'
 - DWL_HTTP_SERVERADMIN: 'admin@localhost'
-- DWL_HTTP_DOCUMENTROOT: '/var/www/html'
+- DWL_HTTP_DOCUMENTROOT: '/var/www'
 - DWL_HTTP_SHIELD: 'false'
 - DWL_SSLKEY_C: 'EU'
 - DWL_SSLKEY_ST: 'France'
@@ -30,8 +40,7 @@
 - APACHE_SSL_DIR: '/etc/apache2/ssl'
 ## Available volumes
 
-- /home/username
-- /var/log/apache2
+- /home/host
 - /etc/apache2/sites-available
 - /etc/apache2/ssl
 ## LABEL

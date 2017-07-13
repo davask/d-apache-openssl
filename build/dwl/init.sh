@@ -1,6 +1,6 @@
-#! /bin/sh -e
+#!/bin/bash
 
-cd .; cd -;
+cd ~/;
 
 dwlDir="/dwl";
 
@@ -29,3 +29,5 @@ echo ">> SSL initialized";
 . ${dwlDir}/apache2.sh
 echo ">> Apache2 initialized";
 
+
+tail -f /dev/null;

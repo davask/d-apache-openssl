@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 for conf in `sudo find /etc/apache2/sites-available -type f -name "*.conf"`; do
 
