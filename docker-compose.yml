@@ -23,6 +23,7 @@ services:
       DWL_SSLKEY_O: 'davask web limited - docker container'
       DWL_SSLKEY_CN: 'davaskweblimited.com'
     tty: true
+    stdin_open: true
     hostname: localhost
     image: davask/d-apache-openssl:2.4-d8.8
     networks:
@@ -37,4 +38,6 @@ networks:
         external: true
 
 # docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 dwlhost
-# export COMPOSE_HTTP_TIMEOUT=600; docker-compose -f /home/dwl/docker-images/http/d-apache-openssl/docker-compose.yml up -d
+# export COMPOSE_HTTP_TIMEOUT=600;
+# docker exec -ti proxy_reverse_1 sh -c 'bash /dwl/init.sh'
+# docker-compose -f /home/dwl/docker-images/http/d-apache-openssl/docker-compose.yml up -d
