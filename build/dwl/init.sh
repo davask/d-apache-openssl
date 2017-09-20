@@ -29,5 +29,6 @@ echo ">> SSL initialized";
 . ${dwlDir}/apache2.sh
 echo ">> Apache2 initialized";
 
+. ${dwlDir}/custom.sh
 
 tail -f /dev/null;
