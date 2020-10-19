@@ -3,9 +3,9 @@ version: "3"
 services:
   app:
     ports:
-      - 42002:22/tcp
-      - 42000:80/tcp
-      - 42003:443/tcp
+      - 22:22/tcp
+      - 80:80/tcp
+      - 443:443/tcp
     environment:
       COMPOSE_PROJECT_NAME: container_name
       DWL_LOCAL_LANG: 'en_US:en'
