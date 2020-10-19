@@ -3,7 +3,7 @@
     "title": "Apache 2.4 + SSL",
     "description": "Apache 2.4 + openssl",
     "logo": "https://www.ssl247.co.uk/img/Free_SSL_logo_rounded.png",
-    "image": "davask/d-apache-openssl:2.4-d8.8",
+    "image": "davask/d-apache-openssl:2.4-d9.0",
     "ports": [
         "22/tcp",
         "80/tcp",

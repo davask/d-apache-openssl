@@ -1,4 +1,4 @@
-FROM davask/d-apache:latest
+FROM davask/d-apache:2.4-d9.0
 MAINTAINER davask <admin@davask.com>
 USER root
 LABEL dwl.server.https="openssl"
