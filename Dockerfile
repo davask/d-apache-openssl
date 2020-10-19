@@ -1,5 +1,5 @@
-FROM davask/d-apache:2.4-d8.8
-MAINTAINER davask <docker@davaskweblimited.com>
+FROM davask/d-apache:latest
+MAINTAINER davask <admin@davask.com>
 USER root
 LABEL dwl.server.https="openssl"
 
@@ -8,8 +8,8 @@ ENV APACHE_SSL_DIR /etc/apache2/ssl
 ENV DWL_SSLKEY_C "EU"
 ENV DWL_SSLKEY_ST "France"
 ENV DWL_SSLKEY_L "Vannes"
-ENV DWL_SSLKEY_O "davask web limited - docker container"
-ENV DWL_SSLKEY_CN "davaskweblimited.com"
+ENV DWL_SSLKEY_O "davask - docker container"
+ENV DWL_SSLKEY_CN "davask.com"
 
 # create apache2 ssl directories
 RUN mkdir -p ${APACHE_SSL_DIR}
@@ -22,7 +22,7 @@ COPY ./build/dwl/etc/apache2/mods-available/ssl.conf /etc/apache2/mods-available
 RUN a2enmod ssl
 
 # Configure apache virtualhost.conf
-COPY ./build/dwl/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl /dwl/etc/apache2/sites-available/0000_docker.davaskweblimited.com_443.conf.dwl
+COPY ./build/dwl/etc/apache2/sites-available/0000_docker.davask.com_443.conf.dwl /dwl/etc/apache2/sites-available/0000_docker.davask.com_443.conf.dwl
 
 EXPOSE 443
 

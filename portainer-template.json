@@ -51,7 +51,7 @@
             "label": "Organization Name (eg, company) [davask web limited - docker container]"
         }{
             "name": "DWL_SSLKEY_CN",
-            "label": "Common Name (e.g. server FQDN or YOUR name) [davaskweblimited.com]"
+            "label": "Common Name (e.g. server FQDN or YOUR name) [davask.com]"
         }
     ],
     "volumes": [

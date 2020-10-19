@@ -35,8 +35,8 @@
 - DWL_SSLKEY_C: 'EU'
 - DWL_SSLKEY_ST: 'France'
 - DWL_SSLKEY_L: 'Vannes'
-- DWL_SSLKEY_O: 'davask web limited - docker container'
-- DWL_SSLKEY_CN: 'davaskweblimited.com'
+- DWL_SSLKEY_O: 'davask - docker container'
+- DWL_SSLKEY_CN: 'davask.com'
 - APACHE_SSL_DIR: '/etc/apache2/ssl'
 ## Available volumes
 

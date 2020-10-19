@@ -14,18 +14,18 @@ services:
       DWL_USER_PASSWD: 'secret'
       DWL_USER_ID: '1000'
       DWL_SSH_ACCESS: 'false'
-      DWL_HTTP_SERVERADMIN: 'admin@localhost'
+      DWL_HTTP_SERVERADMIN: 'admin@davask.com'
       DWL_HTTP_DOCUMENTROOT: '/var/www'
       DWL_HTTP_SHIELD: 'false'
       DWL_SSLKEY_C: 'EU'
       DWL_SSLKEY_ST: 'France'
       DWL_SSLKEY_L: 'Vannes'
-      DWL_SSLKEY_O: 'davask web limited - docker container'
-      DWL_SSLKEY_CN: 'davaskweblimited.com'
+      DWL_SSLKEY_O: 'davask - docker container'
+      DWL_SSLKEY_CN: 'davask.com'
     tty: true
     stdin_open: true
     hostname: localhost
-    image: davask/d-apache-openssl:2.4-d8.8
+    image: davask/d-apache-openssl:2.4-d9.0
     networks:
       - dwlhost
     volumes:
